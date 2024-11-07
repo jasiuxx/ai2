@@ -1,0 +1,25 @@
+# config/validator/validation.yaml
+App\Entity\Location:
+  properties:
+    city:
+      - NotBlank: { message: "City cannot be blank" }
+      - Length:
+          min: 3
+          max: 255
+          minMessage: "City must be at least {{ limit }} characters long."
+          maxMessage: "City must be no longer than {{ limit }} characters."
+      - Regex:
+          pattern: '/^[A-Z][a-z]+(?:[ -]?[A-Za-z]+)*$/'
+          message: 'City name cannot be written in all capital letters'
+
+
+
+App\Entity\Measurement:
+  properties:
+    celsius:
+      - NotBlank: { message: "Measurement value cannot be blank" }
+      - Type: { type: "numeric", message: "Value must be a number" }
+      - Range:
+          min: 0
+          max: 1000
+          notInRangeMessage: "Value must be between {{ min }} and {{ max }}."
