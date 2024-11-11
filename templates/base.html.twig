@@ -41,6 +41,15 @@
         </div>
     </nav>
 
+    <!-- Add login/logout links based on user role -->
+    <div class="d-flex justify-content-end mt-3">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a href="{{ path('app_logout') }}" class="btn btn-danger">Logout</a>
+        {% else %}
+            <a href="{{ path('app_login') }}" class="btn btn-primary">Login</a>
+        {% endif %}
+    </div>
+
     {% block body %}{% endblock %}
 </div>
 
