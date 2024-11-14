@@ -64,4 +64,14 @@ class Measurement
 
         return $this;
     }
+    // Nowa metoda, która konwertuje temperaturę Celsjusza na Fahrenheita
+    public function getFahrenheit(): ?string
+    {
+        if ($this->celsius === null) {
+            return null;
+        }
+        $fahrenheit = (float)$this->celsius * 9 / 5 + 32;
+        return (string)round($fahrenheit, 1);
+    }
+
 }
